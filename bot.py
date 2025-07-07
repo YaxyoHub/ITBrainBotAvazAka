@@ -4,6 +4,7 @@ from loader import dp, bot
 from handlers.start_handler import start_router
 from handlers.question_handler import question_router
 from handlers.lessons_handler import lesson_router
+from handlers.error_handler import error_router
 
 from admin_handlers.add_lessons import admin_lesson_router
 from admin_handlers.admin_panel import admin_router
@@ -24,6 +25,7 @@ dp.include_router(add_user_router)
 dp.include_router(add_admin_router)
 dp.include_router(send_ads_router)
 
+dp.include_router(error_router)
 
 async def main():
     await dp.start_polling(bot)
