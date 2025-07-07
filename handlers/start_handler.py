@@ -15,4 +15,4 @@ async def start_cmd(message: Message):
         return await message.reply(f"⚠️ Siz ushbu botdan foydalana olmaysiz\n"
                             f"Chunki siz foydalanuvchilar ro'yxatida yo'qsiz")
     await message.reply(f"👋 Salom {message.from_user.first_name}\n\n"
-                        "Marhamat 🤗", reply_markup=user_menu)
+                        "Marhamat Siz ushbu botdan foydalanashingiz mumkin🤗", reply_markup=user_menu)
