@@ -48,9 +48,9 @@ async def select_lesson(callback: CallbackQuery):
 @lesson_router.callback_query(F.data == 'go_back')
 async def ortga(callback: CallbackQuery):
     await callback.message.delete()
-    await callback.message.answer("Marhamat", reply_markup=lesson_menu())
+    await callback.message.answer("Marhamat Siz ushbu botdan foydalanashingiz mumkin", reply_markup=lesson_menu())
 
 @lesson_router.callback_query(F.data == "back_menu")
 async def ortga_menu(callback: CallbackQuery):
     await callback.message.delete()
-    await callback.message.answer("Marhamat", reply_markup=user_menu)
+    await callback.message.answer("Marhamat Siz ushbu botdan foydalanashingiz mumkin", reply_markup=user_menu)
