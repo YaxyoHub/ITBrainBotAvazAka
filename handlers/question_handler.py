@@ -16,7 +16,8 @@ question_router = Router()
 async def boglanish(callback: CallbackQuery, state: FSMContext):
     await state.clear()
     await callback.message.delete()
-    await callback.message.answer("❌ Bekor qilindi", reply_markup=user_menu)
+    await callback.message.answer("❌ Adminga so'rov bekor qilindi\n"
+                                  "Marhamat Siz ushbu botdan foydalanashingiz mumkin", reply_markup=user_menu)
 
 @question_router.callback_query(F.data == "question_admin", IsUser())
 async def call_handler(callback: CallbackQuery, state: FSMContext):
@@ -49,7 +50,7 @@ async def get_phone_contact(message: Message, state: FSMContext):
         else:
             return await message.answer("❌ Telefon raqam noto‘g‘ri. Iltimos, +998 bilan kiriting.")
     
-    await message.answer("Adminga yozma shaklda so'rov yuboring")
+    await message.answer("Adminga yozma shaklda so'rovingiz yozib yuboring")
     await state.set_state(ContactForm.question)
 
 @question_router.message(ContactForm.question)
@@ -57,7 +58,7 @@ async def get_question(message: Message, state: FSMContext):
     await state.update_data(question=message.text)
 
     data = await state.get_data()
-    await message.answer("✅ So'rovingiz yuborildi", reply_markup=user_menu)
+    await message.answer("✅ So'rovingiz yuborildi. Admin tomonidan tez orada ko'rib chiqiladi", reply_markup=user_menu)
     msg = (
         f"📥 O'quvchidan so'rov:\n\n"
         f"👤 Ismi: {data['name']}\n"
